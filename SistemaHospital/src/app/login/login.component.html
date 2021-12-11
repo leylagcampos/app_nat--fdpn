@@ -1,0 +1,14 @@
+
+<h1>Bienvenido</h1>
+<form [formGroup]="formularioLogin">
+    <div class="form-group">
+      <label for="email" >Email</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@example.com" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label for="password">Contraseña</label>
+      <input type="password" (KeyUp.enter)="ingresar()" class="form-control" placeholder="contraseña" id="password" formControlName="password">
+    </div>
+    <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid" class="btn">Ingresar</button>
+  </form>
+  <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">{{errormessage}}  </div>
