@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ErrorFactory } from '@firebase/util';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +13,8 @@ export class LoginComponent implements OnInit {
   errormessage: String = '';
 
   formularioLogin: FormGroup = this.builderForm.group({
-    email: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.required]
+    email: ['',[Validators.required, Validators.email]],
+    password: ['',[Validators.required]]
   });
   constructor(private builderForm: FormBuilder, private auth: AngularFireAuth) { }
 
@@ -26,12 +25,27 @@ export class LoginComponent implements OnInit {
   ingresar() {
     if (this.formularioLogin.valid) {
       this.datosCorrectos = true;
-      this.auth.signInWithEmailAndPassword(this.formularioLogin.value.email, this.formularioLogin.value.password).catch((error)=>{
-        this.datosCorrectos = false;
-        //this.errormessage = error.message;
-        this.errormessage="El correo o contraseña están incorrectos, porfavor intentelo denuevo";
-      })
-    }
-    
+      this.auth
+        .signInWithEmailAndPassword(
+          this.formularioLogin.value.email,
+          this.formularioLogin.value.password
+        )
+        .then((usuario) => {
+          console.log(usuario);
+        })
+        .catch((error) => {
+          this.datosCorrectos = false;
+          this.errormessage = "Correo y/o contraseña son incorrectos,porfavor revise e inténtelo denuevo";
+        });
+    } 
   }
+ isRequiredField(field: string): boolean {
+  const formControl = this.formularioLogin.get(field);
+  return formControl?.errors?.['required'] && formControl?.touched;
+  }
+
+  isValidEmail(): boolean {
+    const formControl = this.formularioLogin.get('email');
+    return formControl?.errors?.['email'] && formControl?.touched; 
+  }    
 }

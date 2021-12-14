@@ -1,14 +1,27 @@
-
 <h1>Bienvenido</h1>
 <form [formGroup]="formularioLogin">
-    <div class="form-group">
-      <label for="email" >Email</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@example.com" formControlName="email">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@example.com"
+      formControlName="email">
+  </div>
+  <div *ngIf="isRequiredField('email')" class="text-start text-danger fw-bold mt-1 error">
+    Correo electrónico requerido
+  </div>
+
+  <div *ngIf="isValidEmail()" class="text-start text-danger fw-bold mt-1 error">
+    Ingrese un correo válido
+  </div>
+
+  <div class="mb-3">
+    <label for="password">Contraseña</label>
+    <input type="password" class="form-control" id="password" (KeyUp.enter)="ingresar()" placeholder="contraseña"
+      formControlName="password">
+  </div>
+  <div *ngIf="isRequiredField('password')"
+         class="text-start text-danger fw-bold mt-1 error">
+      Contraseña requerida
     </div>
-    <div class="mb-3">
-      <label for="password">Contraseña</label>
-      <input type="password" (KeyUp.enter)="ingresar()" class="form-control" placeholder="contraseña" id="password" formControlName="password">
-    </div>
-    <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid" class="btn">Ingresar</button>
-  </form>
-  <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">{{errormessage}}  </div>
+  <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid" class="btn">Ingresar</button>
+</form>
+<div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">{{errormessage}} </div>
