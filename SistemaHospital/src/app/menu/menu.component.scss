@@ -3,19 +3,22 @@ button{
     display: block;
     margin: 10px ;
     border-radius: 20px;
-    height: auto;
+    height: 30px;
     width: 95%;
     text-align: center;
+    border-style: none;
+    margin-bottom: 30px;
 }
 
 nav{
-    background-color: azure;
+    background-color: white;
     width: 20%;
     height: 100%;
     padding:10px;
+    padding-top: 30px;
     margin-right: 80%;
     margin-left: 1%;
-    position: fixed;
+    position: absolute;
     overflow: auto;
   }
   button:hover{
@@ -23,10 +26,16 @@ nav{
     background-color: #da9f0b ;
   } 
   
-  /*
- 
+  .logout{
+    margin-top: 80px;
+    width: 30%;
+    align-items: center;
+    margin-left: 30%;
+  }
 
-  button:active{
+  
+
+  button.active{
     color: #ffffff;
     background-color: #da9f0b
-  } */
+  } 
