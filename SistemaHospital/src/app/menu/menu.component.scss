@@ -1,0 +1,32 @@
+button{
+    background-color: #E3C578;
+    display: block;
+    margin: 10px ;
+    border-radius: 20px;
+    height: auto;
+    width: 95%;
+    text-align: center;
+}
+
+nav{
+    background-color: azure;
+    width: 20%;
+    height: 100%;
+    padding:10px;
+    margin-right: 80%;
+    margin-left: 1%;
+    position: fixed;
+    overflow: auto;
+  }
+  button:hover{
+    color: #000000;
+    background-color: #da9f0b ;
+  } 
+  
+  /*
+ 
+
+  button:active{
+    color: #ffffff;
+    background-color: #da9f0b
+  } */

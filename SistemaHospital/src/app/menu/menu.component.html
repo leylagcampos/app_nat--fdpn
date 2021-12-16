@@ -1,1 +1,12 @@
-<p>menu works!</p>
+<nav>
+    <button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</button>
+    <button routerLink="/agregar-asegurado" routerLinkActive="active">Agregar asegurados</button>
+    <button routerLink="/asegurados" routerLinkActive="active">Lista de asegurados</button>
+    <button routerLink="/doctores" routerLinkActive="active">Lista de doctores</button>
+    <button routerLink="/pacientes" routerLinkActive="active">Lista de pacientes</button>
+    <button routerLink="/camas" routerLinkActive="active">Camas disponible</button>
+    <button routerLink="/enfermedades" routerLinkActive="active">Lista de enfermedades</button>
+    <button (click)="logout()">Salir</button>
+</nav>
+
+
