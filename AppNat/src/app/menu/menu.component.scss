@@ -1,5 +1,5 @@
 button{
-    background-color: #E3C578;
+    background-color: #78b8c0;
     display: block;
     margin: 10px ;
     border-radius: 20px;
@@ -8,10 +8,12 @@ button{
     text-align: center;
     border-style: none;
     margin-bottom: 30px;
+    color: #ffffff;
+
 }
 
 nav{
-    background-color: white;
+    background-color: rgb(213, 237, 238);
     width: 20%;
     height: 100%;
     padding:10px;
@@ -22,8 +24,8 @@ nav{
     overflow: auto;
   }
   button:hover{
-    color: #000000;
-    background-color: #da9f0b ;
+    color: #050505;
+    background-color: #fdfdfd ;
   } 
   
   .logout{
@@ -37,5 +39,5 @@ nav{
 
   button.active{
     color: #ffffff;
-    background-color: #da9f0b
+    background-color: #28aec0;
   } 

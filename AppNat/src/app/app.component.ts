@@ -6,7 +6,7 @@ import { AngularFireAuth} from '@angular/fire/compat/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'SistemaHospital';
+  title = 'APP NAT';
  
   constructor(public auth: AngularFireAuth) {
    

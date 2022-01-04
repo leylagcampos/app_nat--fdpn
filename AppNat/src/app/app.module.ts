@@ -16,6 +16,7 @@ import { MenuComponent } from './menu/menu.component';
     LoginComponent,
     EncabezadoComponent,
     MenuComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase:{
-    apiKey: "AIzaSyBMQs4o7_CwjX80sQsmQtVLIv9NCuieEXA",
-    authDomain: "sistemahospitalario-8ad0d.firebaseapp.com",
-    projectId: "sistemahospitalario-8ad0d",
-    storageBucket: "sistemahospitalario-8ad0d.appspot.com",
-    messagingSenderId: "596047175290",
-    appId: "1:596047175290:web:b985e1f560e590933a25c3",
-    measurementId: "G-0G530TW29S"
+    apiKey: "AIzaSyAXWl1VvthU9aR4u0hRd50u4gfr7h4x38o",
+    authDomain: "appnat-16d2d.firebaseapp.com",
+    projectId: "appnat-16d2d",
+    storageBucket: "appnat-16d2d.appspot.com",
+    messagingSenderId: "575427943139",
+    appId: "1:575427943139:web:6e5cc950c637930310c3d6",
+    measurementId: "G-SXERMPWZE2"
   }
 };
 
