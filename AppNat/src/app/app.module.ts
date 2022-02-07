@@ -11,6 +11,8 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { MenuComponent } from './menu/menu.component';
 import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     LoginComponent,
     EncabezadoComponent,
     MenuComponent,
-    VerClientesComponent
+    VerClientesComponent,
+    AgregarClientesComponent
     
   ],
   imports: [
@@ -26,7 +29,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [AngularFireAuth,AngularFirestore],
   bootstrap: [AppComponent]
