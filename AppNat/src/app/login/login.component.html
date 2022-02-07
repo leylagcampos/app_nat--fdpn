@@ -1,6 +1,11 @@
-<h1>Bienvenido</h1>
+<div class="imagenbox">
+  <h1>Bienvenido a  APP NAT</h1>
+  <i class="fas fa-swimmer fa-6x"></i>
+</div>
+<div class="login">
 <form [formGroup]="formularioLogin">
-  <div class="form-group">
+  <h2>Inicia sesión</h2>
+  <div>
     <label for="email">Email</label>
     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@example.com"
       formControlName="email">
@@ -25,3 +30,4 @@
   <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid" class="btn">Ingresar</button>
 </form>
 <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">{{errormessage}} </div>
+</div>

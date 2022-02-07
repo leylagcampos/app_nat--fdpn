@@ -6,25 +6,29 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { MenuComponent } from './menu/menu.component';
+import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EncabezadoComponent,
-    MenuComponent
+    MenuComponent,
+    VerClientesComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [AngularFireAuth],
+  providers: [AngularFireAuth,AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

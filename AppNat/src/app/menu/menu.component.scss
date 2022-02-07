@@ -1,5 +1,5 @@
 button{
-    background-color: #78b8c0;
+    background-color: #7dc9d3f1;
     display: block;
     margin: 10px ;
     border-radius: 20px;
@@ -13,9 +13,9 @@ button{
 }
 
 nav{
-    background-color: rgb(213, 237, 238);
+    background-color: rgba(171, 211, 238, 0.404);
     width: 20%;
-    height: 100%;
+    height: 100vh;
     padding:10px;
     padding-top: 30px;
     margin-right: 80%;
@@ -41,3 +41,11 @@ nav{
     color: #ffffff;
     background-color: #28aec0;
   } 
+
+  h5{
+    color:#28aec0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: normal;
+    text-align: center;
+    padding: 5%;
+  }
