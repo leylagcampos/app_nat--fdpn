@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-clientes',
@@ -12,33 +13,70 @@ export class AgregarClientesComponent implements OnInit {
 
   porcentajeSubida: number = 0;
   urlimg: string = '';
+  id: string = '';
+  esEditable: boolean = false;
+  formularioCliente: FormGroup = new FormGroup({});
 
-  formularioCliente: FormGroup = this.fb.group({
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
-    email: ['', Validators.compose([Validators.required, Validators.email])],
-    dni: [''],
-    cel: [''],
-    imgurl: ['', Validators.required],
-  });
-
-
-  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private db: AngularFirestore) { }
-
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore,
+    private activeRoute: ActivatedRoute
+  ) {
 
   }
 
-  agregar() {
-    this.formularioCliente.value.imgurl=this.urlimg;
-    console.log(this.formularioCliente.value)
-    this.db.collection('clientes').add(this.formularioCliente.value).then((termino) => {
-      console.log('Registro cerrado');
+  ngOnInit() {
+
+    this.formularioCliente = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      dni: [''],
+      cel: [''],
+      imgurl: ['', Validators.required],
+    })
+
+    this.id = this.activeRoute.snapshot.params['clienteID'];
+    if (this.id != undefined) {
+      this.esEditable = true;
+      this.db.doc<any>('clientes/' + this.id).valueChanges().subscribe((cliente) => {
+
+        this.formularioCliente.setValue({
+          nombre: cliente.nombre,
+          apellido: cliente.apellido,
+          email: cliente.email,
+          cel: cliente.cel,
+          dni: cliente.dni,
+          imgurl: ''
+        })
+        this.urlimg = cliente.imgurl
+
+      });
+    }
+  }
+
+  editar() {
+    this.formularioCliente.value.imgurl = this.urlimg;
+    this.db.doc('clientes/' + this.id).update(this.formularioCliente.value).then((res) => {
+      alert("Se edito correctamente")
+    }).catch(() => {
+      alert("error")
     })
   }
 
-  subirimg(evento:any) {
-    if (evento.target.files.length>0) {
+  agregar() {
+    this.formularioCliente.value.imgurl = this.urlimg;
+    console.log(this.formularioCliente.value)
+    this.db.collection('clientes').add(this.formularioCliente.value).then((termino) => {
+      alert("Se agregó correctamente")
+    }).catch(() => {
+      alert("error")
+    })
+  }
+
+  subirimg(evento: any) {
+    if (evento.target.files.length > 0) {
       let namefile = new Date().getTime().toString();
       let file = evento.target.files[0];
       let ext = file.name.toString().substring(file.name.toString().lastIndexOf('.'));
@@ -49,7 +87,7 @@ export class AgregarClientesComponent implements OnInit {
       task.then((obj) => {
         console.log('imagen subida')
         ref.getDownloadURL().subscribe((url) => {
-        this.urlimg=url;
+          this.urlimg = url;
         })
       });
 

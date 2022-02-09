@@ -52,15 +52,19 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="">Imagen {{porcentajeSubida}} %</label>
-                    <input type="file" (change)="subirimg($event)" class="form-control" formControlName="imgurl" placeholder="Agregue su imagen">
+                    <input type="file" (change)="subirimg($event)" class="form-control" formControlName="imgurl"
+                        placeholder="Agregue su imagen">
                 </div>
                 <div *ngIf="isRequiredField('imgurl')" class="text-start text-danger fw-bold mt-1 error">
                     La imagen es requerida
                 </div>
             </div>
+            <div lass="col-sm-12">
+                <button *ngIf="!esEditable" class="btn btn-primary" (click)="agregar()"
+                    [disabled]="formularioCliente.invalid||!urlimg">Agregar</button>
+                <button *ngIf="esEditable" class="btn btn-primary" (click)="editar()"
+                    [disabled]="formularioCliente.invalid&&!urlimg">Editar</button>
+            </div>
         </div>
-
-        <button class="btn btn-primary" (click)="agregar()" [disabled]="formularioCliente.invalid">Agregar</button>
-
     </form>
 </div>

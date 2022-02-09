@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path:'agregar-clientes', component:AgregarClientesComponent
 
+  },
+  {
+    path:'agregar-clientes/:clienteID', component:AgregarClientesComponent
+
   }
 ];
 

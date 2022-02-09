@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
 
 
 @Component({
@@ -9,38 +10,32 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class VerClientesComponent implements OnInit {
   clientes:any[]=new Array<any>();
-  constructor(private db:AngularFirestore) { 
+  constructor(private db:AngularFirestore, private activeRoute: ActivatedRoute) { 
     
   }
 
   ngOnInit(){
-    /*this.db.collection('clientes').valueChanges().subscribe(res=>{
-      this.clientes=res;
-      console.log(res)
-    });
-    */
+   
     this.clientes.length=0;
     this.db.collection('clientes').get().subscribe((res)=>{
-     
-      console.log(res.docs)
-
-       /* 
-       res.docs.forEach((item)=>{
-        console.log(item.id)
-        console.log(item.data())
-        console.log(item.ref)
-        })
-       */
-      
-     
-      for(let item of res.docs){
-        let cliente:any= item.data();
-        cliente.id =item.id;
-        cliente.ref =item.ref;
-        this.clientes.push(cliente);
-      }
-
+    console.log(res.docs)
+    for(let item of res.docs){
+      let cliente:any= item.data();
+      cliente.id =item.id;
+      cliente.ref =item.ref;
+      this.clientes.push(cliente);
+    }
     });
+  }
+
+  eliminar(id:string) {
+    
+    this.db.doc('clientes/'+id).delete().then((res) => {
+      alert("Se elimino correctamente")
+      location.reload()
+    }).catch(() => {
+      alert("error")
+    })
   }
 
 }
