@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.component';
-import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
+import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
+import { PreciosComponent } from './precios/precios.component';
 
 const routes: Routes = [
   {
-    path:'ver-clientes', component:VerClientesComponent
+    path:'listar-clientes', component:ListarClientesComponent
     
   },
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   },
   {
     path:'agregar-clientes/:clienteID', component:AgregarClientesComponent
+
+  },
+  {
+    path:'precios', component:PreciosComponent
 
   }
 ];

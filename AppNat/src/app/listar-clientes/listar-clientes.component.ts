@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
 
 
 @Component({
-  selector: 'app-ver-clientes',
-  templateUrl: './ver-clientes.component.html',
-  styleUrls: ['./ver-clientes.component.scss']
+  selector: 'app-listar-clientes',
+  templateUrl: './listar-clientes.component.html',
+  styleUrls: ['./listar-clientes.component.scss']
 })
-export class VerClientesComponent implements OnInit {
+export class ListarClientesComponent implements OnInit {
+
   clientes:any[]=new Array<any>();
   constructor(private db:AngularFirestore, private activeRoute: ActivatedRoute) { 
     

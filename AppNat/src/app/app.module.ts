@@ -9,10 +9,12 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { MenuComponent } from './menu/menu.component';
-import { VerClientesComponent } from './ver-clientes/ver-clientes.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.component';
+import { MensajesService } from './services/mensajes.service';
+import { PreciosComponent } from './precios/precios.component';
+import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,9 @@ import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.co
     LoginComponent,
     EncabezadoComponent,
     MenuComponent,
-    VerClientesComponent,
-    AgregarClientesComponent
+    AgregarClientesComponent,
+    PreciosComponent,
+    ListarClientesComponent
     
   ],
   imports: [
@@ -32,7 +35,7 @@ import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.co
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
-  providers: [AngularFireAuth,AngularFirestore],
+  providers: [AngularFireAuth,AngularFirestore,MensajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

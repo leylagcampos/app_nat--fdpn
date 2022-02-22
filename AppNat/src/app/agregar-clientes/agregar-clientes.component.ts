@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MensajesService } from '../services/mensajes.service';
 
 @Component({
   selector: 'app-agregar-clientes',
@@ -21,7 +22,8 @@ export class AgregarClientesComponent implements OnInit {
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private db: AngularFirestore,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private mensaje:MensajesService
   ) {
 
   }
@@ -59,9 +61,9 @@ export class AgregarClientesComponent implements OnInit {
   editar() {
     this.formularioCliente.value.imgurl = this.urlimg;
     this.db.doc('clientes/' + this.id).update(this.formularioCliente.value).then((res) => {
-      alert("Se edito correctamente")
+      this.mensaje.msjExito('Editado','Se editó el cliente correctamente')
     }).catch(() => {
-      alert("error")
+      this.mensaje.msjError('Error!','Hubo un problema para actualizar el cliente.Revise si todo esta correcto')
     })
   }
 
@@ -69,9 +71,9 @@ export class AgregarClientesComponent implements OnInit {
     this.formularioCliente.value.imgurl = this.urlimg;
     console.log(this.formularioCliente.value)
     this.db.collection('clientes').add(this.formularioCliente.value).then((termino) => {
-      alert("Se agregó correctamente")
+      this.mensaje.msjExito('Agregado','Se agregó correctamente')
     }).catch(() => {
-      alert("error")
+      this.mensaje.msjError('Error!','Hubo un problema  al agregar el cliente.Revise si todo esta correcto')
     })
   }
 
