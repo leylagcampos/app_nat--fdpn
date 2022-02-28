@@ -15,6 +15,9 @@ import { AgregarClientesComponent } from './agregar-clientes/agregar-clientes.co
 import { MensajesService } from './services/mensajes.service';
 import { PreciosComponent } from './precios/precios.component';
 import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
+import { InscripcionComponent } from './inscripcion/inscripcion.component';
+import { HorariosComponent } from './horarios/horarios.component';
+import { SeleccionarClientesComponent } from './seleccionar-clientes/seleccionar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ListarClientesComponent } from './listar-clientes/listar-clientes.compo
     MenuComponent,
     AgregarClientesComponent,
     PreciosComponent,
-    ListarClientesComponent
+    ListarClientesComponent,
+    InscripcionComponent,
+    HorariosComponent,
+    SeleccionarClientesComponent
     
   ],
   imports: [

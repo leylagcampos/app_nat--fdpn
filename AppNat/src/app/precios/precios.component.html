@@ -1,1 +1,59 @@
-<p>precios works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <table class="table table-hover mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Cantidad de clases</th>
+            <th scope="col">Días</th>
+            <th scope="col">Precio</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let precio of precios">
+            <td>{{precio.nombreplan}}</td>
+            <td>{{precio.cntclases}}</td>
+            <td>{{precio.dias}}</td>
+            <td>{{precio.precio}}</td>
+            <td>
+              <i (click)="mostrarprecio(precio)" class="fa fa-edit fa-lg text-info"></i>
+              <i (click)="eliminarprecio(precio)"class="fa fa-trash fa-lg text-danger"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3 mt-5 bg-info rounded-2">
+      <h3>Formulario Planes</h3>
+      <form action="" class="" [formGroup]="formPrecio">
+        <div class="form-group">
+          <label for="">Nombre del Plan</label>
+          <input formControlName="nombreplan" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Cantidad de clases</label>
+          <input formControlName="cntclases" type="number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Días</label>
+          <select formControlName="dias" class="form-control" name="" id="">
+            <option value="1">L-MI-V</option>
+            <option value="2">M-J-S</option>
+            <option value="M-J">M-J</option>
+            <option value="4">S</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Precio</label>
+          <input formControlName="precio" type="number" class="form-control">
+        </div>
+        <div class="m-2  text-center">
+          <button *ngIf="!esEditable" class="btn btn-dark" (click)="agregarprecio()">Agregar</button>
+          <button *ngIf="esEditable" class="btn btn-dark" (click)="editarprecio()">Editar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

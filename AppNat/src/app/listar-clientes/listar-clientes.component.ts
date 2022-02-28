@@ -16,7 +16,6 @@ export class ListarClientesComponent implements OnInit {
   }
 
   ngOnInit(){
-   
     this.clientes.length=0;
     this.db.collection('clientes').get().subscribe((res)=>{
     console.log(res.docs)

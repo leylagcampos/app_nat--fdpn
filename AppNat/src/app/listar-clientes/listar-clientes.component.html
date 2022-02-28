@@ -1,23 +1,31 @@
 <div class="container">
-    <h4>Ver clientes</h4>
-    <form action="">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Busque al cliente">
-        </div>
-    </form>
-    <div class="row mt-3">
-        <div class="col-sm-3"  *ngFor="let cliente of clientes">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" [src]="cliente.imgurl" >
-                <div class="card-body">
-                  <h5 class="card-title">{{cliente.nombre}} {{cliente.apellido}}</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a [routerLink]="['/agregar-clientes/',cliente.id]" class="card-link">Editar</a>
-                  <button (click)="eliminar(cliente.id)"  class="card-link text-danger">Eliminar</button>
+    <h4>Clientes</h4>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Busque al cliente">
                 </div>
-              </div>
+            </form>
         </div>
-      
-       
+        <div class="col-sm-4 ms-5">
+            <button class="btn btn-primary" routerLink="/agregar-clientes">Agregar cliente +</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-3" *ngFor="let cliente of clientes">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="cliente.imgurl">
+                <div class="card-body">
+                    <h5 class="card-title">{{cliente.nombre}} {{cliente.apellido}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a [routerLink]="['/agregar-clientes/',cliente.id]" class="card-link">Editar</a>
+                    <button (click)="eliminar(cliente.id)" class="card-link text-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
