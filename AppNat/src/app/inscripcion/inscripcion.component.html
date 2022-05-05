@@ -1,7 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <app-seleccionar-clientes></app-seleccionar-clientes>
+            <app-seleccionar-clientes [client]="clienteseleccionado.nombre" (seleccionocliente)="asignarcliente($event)" (cancelocliente)="cancelarseleccion()"></app-seleccionar-clientes>
+            <div>
+                <label for="">Precio</label>
+                <select class="form-control" name="" id="">
+                    <option *ngFor="let precio of precios" value="">{{precio.nombreplan}}</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" (click)="guardar()">Guardar</button>
         </div>
         <div class="col-sm-6">
             segunda columna
