@@ -11,7 +11,7 @@ import { Precio } from '../models/precio';
 })
 export class InscripcionComponent implements OnInit {
   inscripcion: Inscripcion = new Inscripcion();
-  clienteseleccionado: Cliente = new Cliente;
+  clienteseleccionado: Cliente = new Cliente();
   precios:Precio[]=new Array<Precio>();
 
   constructor( private db: AngularFirestore) { }
@@ -37,6 +37,6 @@ export class InscripcionComponent implements OnInit {
   }
 
   guardar(){
-    console.log(this.inscripcion)
+    console.log(this.inscripcion);
   }
 }

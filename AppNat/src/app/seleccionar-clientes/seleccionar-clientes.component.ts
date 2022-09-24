@@ -8,7 +8,7 @@ import { Cliente } from '../models/cliente';
   styleUrls: ['./seleccionar-clientes.component.scss']
 })
 export class SeleccionarClientesComponent implements OnInit {
-  clientes: Cliente[] = new Array<Cliente>()
+  clientes: Cliente[] = new Array<Cliente>();
   @Input('client') client:String | undefined;
   @Output('seleccionocliente') seleccionocliente=new EventEmitter();
   @Output('cancelocliente') cancelocliente=new EventEmitter();
